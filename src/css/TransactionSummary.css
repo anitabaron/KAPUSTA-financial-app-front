@@ -1,0 +1,41 @@
+@media (max-width: 767px) {
+  .transaction-summary-box {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+}
+.transaction-summary-box {
+  width: 213px;
+  background-color: #f5f6fb;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 364px;
+  margin-bottom: 50px;
+}
+.summary-table-head {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.06px;
+  letter-spacing: 2%;
+}
+.summary-table-head-p {
+  border-bottom: 2px solid #ffffff;
+  width: 213px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}
+.summary-table-row {
+  border-bottom: 2px solid #ffffff;
+  width: 213px;
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}

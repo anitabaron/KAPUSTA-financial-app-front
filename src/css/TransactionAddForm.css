@@ -1,0 +1,145 @@
+@media (min-width: 768px) and (max-width: 1279px) {
+  .transaction-add-form-btn-box {
+    width: 289px;
+    height: 100%;
+    display: flex;
+    margin: 32px auto 48px auto;
+    gap: 16px;
+  }
+  .transaction-add-form-desciption {
+    width: 186px;
+    height: 100%;
+    margin-left: 32px;
+    border: 2px solid #f5f6fb;
+    border-top-left-radius: 16px;
+  }
+  .transaction-add-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 44px;
+    margin: 32px auto 124px auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .transaction-add-form-btn-box {
+    width: 289px;
+    height: 100%;
+    display: flex;
+
+    gap: 16px;
+    margin-left: 32px;
+    padding-left: 16px;
+  }
+  .transaction-add-form-desciption {
+    width: 290px;
+    height: 100%;
+    margin-left: 32px;
+    border: 2px solid #f5f6fb;
+    border-top-left-radius: 16px;
+  }
+  .transaction-add-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 44px;
+    margin: 32px auto 60px auto;
+  }
+}
+
+.transaction-add-form {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+input,
+
+select{
+    width:100%;
+    height:100%;
+    border: none;
+    background-color: transparent;
+}
+.transaction-add-form-data{
+    width: 112px;
+    height: 100%;
+    margin-left:24px;
+}
+input:focus {
+    outline: none;
+
+}
+.transaction-add-form-data {
+  width: 112px;
+  height: 100%;
+  margin-left: 24px;
+}
+
+.transaction-add-form-category {
+  width: 169px;
+  height: 100%;
+  border: 2px solid #f5f6fb;
+  margin-left: -2px;
+}
+.transaction-add-form-amount {
+  width: 121px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #f5f6fb;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-left: -2px;
+  padding-right: 16px;
+  text-align: right;
+}
+.transaction-add-form-amount-container {
+  width: 121px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.calculator-icon {
+  width: 20px;
+  height: 20px;
+}
+.transaction-add-form-btn-box>:nth-child(1){
+    width: 136px;
+    height: 100%;
+    background-color: #FF751D;
+    border-radius: 16px;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0px 5px 5px 0px #FF6B0859;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+.transaction-add-form-btn-box>:nth-child(1):hover {
+    transform: scale(1.1);
+}
+.transaction-add-form-btn-box>:nth-child(1):active {
+    filter: brightness(1.3);
+}
+.transaction-add-form-btn-box>:nth-child(2){
+    width: 136px;
+    height: 100%;
+    background-color: #F5F6FB;
+    border-radius: 16px;
+    border: none;
+    color: #52555F;
+    box-shadow: 0px 5px 5px 0px #AAB2C533;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+.transaction-add-form-btn-box>:nth-child(2):hover {
+    transform: scale(1.1);
+}
+.transaction-add-form-btn-box>:nth-child(2):active {
+    filter: brightness(0.8);
+}
+.error-msg {
+    color: red;
+}

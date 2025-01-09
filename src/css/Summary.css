@@ -1,0 +1,9 @@
+.summary-container {
+  margin: 100px auto 100px auto;
+  /* width: 1000px; */
+  height: 692px;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,0 +1,90 @@
+@media (max-width: 767px) {
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .register-form-container {
+    width: 426px;
+    height: 552px;
+    position: absolute;
+    top: 317px;
+    left: 171px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px 0px #aab2c533;
+  }
+}
+@media (min-width: 1280px) {
+  .register-form-container {
+    width: 426px;
+    height: 552px;
+    position: absolute;
+    top: 117px;
+    left: 763px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px 0px #aab2c533;
+  }
+}
+.register-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-form-p1 {
+  margin: 15px auto 0 auto;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.register-form-p2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.register-input-box {
+  width: 259px;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 20px auto;
+}
+.register-input {
+  width: 259px;
+  height: 52px;
+  padding-left: 20px;
+  border-radius: 30px;
+  background-color: #f6f7fb;
+  border: none;
+}
+.register-form-btn-box {
+  position: absolute;
+  bottom: 20px;
+  width: 259px;
+  height: 44px;
+  display: flex;
+  gap: 15px;
+  margin: 0 auto;
+}
+.isActive {
+  width: 122px;
+  height: 44px;
+  background-color: #ff751d;
+  border-radius: 16px;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0px 5px 5px 0px #ff6b0859;
+}
+.isInActive {
+  width: 122px;
+  height: 44px;
+  background-color: #f5f6fb;
+  border-radius: 16px;
+  border: none;
+  color: #52555f;
+  box-shadow: 0px 5px 5px 0px #aab2c533;
+}
+.error-msg {
+  color: red;
+}
+.required-star {
+  color: red;
+  font-size: 16px;
+}

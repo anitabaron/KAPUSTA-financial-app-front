@@ -1,0 +1,56 @@
+.transaction-nav-btn-container {
+  width: 276px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.transaction-nav-btn-container h1 {
+  font-size: 14px;
+}
+
+.button-vector {
+  width: 10px;
+  height: 34px;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.transaction-nav-btn-container {
+  width: 276px;
+  height: 40px;
+}
+
+.sheetIsInActive {
+  width: 138px;
+  height: 40px;
+  background-color: #fafbfd;
+  border: none;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.06px;
+  letter-spacing: 2%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.sheetIsActive {
+  width: 138px;
+  height: 44px;
+  background-color: #fefefe;
+  border: none;
+  color: #ff751d;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.06px;
+  letter-spacing: 2%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}

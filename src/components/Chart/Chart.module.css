@@ -1,0 +1,30 @@
+.box {
+  border-radius: 30px;
+  width: 320px;
+  box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
+  background: #fff;
+  margin: 0 auto;
+  height: 300px;
+}
+.chart {
+  padding: 10px 30px;
+}
+
+@media (min-width: 768px) {
+  .box {
+    width: 704px;
+    height: 422px;
+  }
+  .chart {
+    padding: 20px 50px;
+  }
+}
+@media (min-width: 1280px) {
+  .box {
+    width: 1034px;
+    height: 422px;
+  }
+  .chart {
+    padding: 20px 100px;
+  }
+}
