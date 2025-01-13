@@ -17,8 +17,8 @@ export default function Transaction({
 
   return (
     <div className="transaction-container">
-      <BalanceNavLine />
       <BtnToReports />
+      <BalanceNavLine />
       <TransactionNavBtn
         activeSheet={activeSheet}
         expensesClass={expensesClass}

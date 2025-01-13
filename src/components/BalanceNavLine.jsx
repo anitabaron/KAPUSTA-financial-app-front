@@ -6,6 +6,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { useBalance } from '../hooks/useBalance';
 import { useState, useEffect } from 'react';
 import WelcomeModal from './WelcomeModal';
+import { useLocation } from 'react-router-dom';
 
 const BalanceNavLine = () => {
   const { selectedDate, setSelectedDate, monthNames, currentDate } =
@@ -60,85 +61,84 @@ const BalanceNavLine = () => {
     setWelcomeModalOpen(false);
   };
 
+  const location = useLocation();
+
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      {/* Go back */}
+      {/* --------------- Go back btn*/}
       <div className={css.box}>
-        <div className={css.back}>
-          <button onClick={handleBack} className={css.goBackBtn}>
-            <img src={arrowIcon} alt="Go Back" className={css.arrowIcon} />
-            Main page
-          </button>
-        </div>
-
-        {/* Balance */}
-        <div className={css.balanceContainer}>
-          <p className={css.balanceP1}>Balance</p>
-          <Formik
-            validationSchema={balanceShema}
-            initialValues={formBalance}
-            onSubmit={(values, actions) => {
-              setBalance(values, actions);
-              actions.resetForm({ values: { balance: '' } });
-            }}
-          >
-            {({ values }) => (
-              <Form className={css.balanceForm}>
-                <div style={{ position: 'relative' }}>
-                  <Field
-                    className={css.balanceInput}
-                    type="text"
-                    name="balance"
-                    placeholder={
-                      balance !== undefined ? balance.toString() : '0'
-                    }
-                  />
-                  {values.balance === 0 && isWelcomeModalOpen && (
-                    <div className={css.welcomeModalContainer}>
-                      <WelcomeModal
-                        isOpen={isWelcomeModalOpen}
-                        onClose={closeWelcomeModal}
-                        firstLine="Hello! To get started, enter the current balance of your account!"
-                        secondLine="You can't spend money until you have it :)"
-                      />
-                    </div>
-                  )}
-                  <div className={css.errorMsg}>
-                    <ErrorMessage name="balance" as="div" />
-                  </div>
-                </div>
-                <button type="submit" className={css.balanceBtn}>
-                  Confirm
-                </button>
-              </Form>
-            )}
-          </Formik>
-        </div>
-
-        {/* Data Selection */}
-        <div className={css.dataNav}>
-          <p>Current period:</p>
-          <div className={css.dataArrows}>
-            <button onClick={handlePrevious} className={css.arrowBtn}>
-              {'<'}
-            </button>
-            <span className={css.dataBold}>
-              {formatDate(selectedDate.monthIndex, selectedDate.year)}
-            </span>
-            <button onClick={handleNext} className={css.arrowBtn}>
-              {'>'}
+        {location.pathname !== '/transaction/expenses' && (
+          <div className={css.back}>
+            <button onClick={handleBack} className={css.goBackBtn}>
+              <img src={arrowIcon} alt="Go Back" className={css.arrowIcon} />
+              Main page
             </button>
           </div>
-          {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
+        )}
+        <div className={css.toFlip}>
+          {/* --------------- Balance */}
+          <div className={css.balanceContainer}>
+            <p className={css.balanceP1}>Balance</p>
+            <Formik
+              validationSchema={balanceShema}
+              initialValues={formBalance}
+              onSubmit={(values, actions) => {
+                setBalance(values, actions);
+                actions.resetForm({ values: { balance: '' } });
+              }}
+            >
+              {({ values }) => (
+                <Form className={css.balanceForm}>
+                  <div style={{ position: 'relative' }}>
+                    <Field
+                      className={css.balanceInput}
+                      type="text"
+                      name="balance"
+                      placeholder={
+                        balance !== undefined ? balance.toString() : '0'
+                      }
+                    />
+                    {values.balance === 0 && isWelcomeModalOpen && (
+                      <div className={css.welcomeModalContainer}>
+                        <WelcomeModal
+                          isOpen={isWelcomeModalOpen}
+                          onClose={closeWelcomeModal}
+                          firstLine="Hello! To get started, enter the current balance of your account!"
+                          secondLine="You can't spend money until you have it :)"
+                        />
+                      </div>
+                    )}
+                    <div className={css.errorMsg}>
+                      <ErrorMessage name="balance" as="div" />
+                    </div>
+                  </div>
+                  <button type="submit" className={css.balanceBtn}>
+                    Confirm
+                  </button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+          {/* --------------- Data Selection */}
+          {location.pathname !== '/transaction/expenses' && (
+            <div className={css.dataNav}>
+              <p>Current period:</p>
+              <div className={css.dataArrows}>
+                <button onClick={handlePrevious} className={css.arrowBtn}>
+                  {'<'}
+                </button>
+                <span className={css.dataBold}>
+                  {formatDate(selectedDate.monthIndex, selectedDate.year)}
+                </span>
+                <button onClick={handleNext} className={css.arrowBtn}>
+                  {'>'}
+                </button>
+              </div>
+              {errorMessage && (
+                <p className={css.errorMessage}>{errorMessage}</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
