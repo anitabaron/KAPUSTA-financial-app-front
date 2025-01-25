@@ -14,6 +14,7 @@ axios.defaults.headers.common.Authorization = `Bearer ${token}`
 export const userDetails = createAsyncThunk(
     'userDetails /fetchreUserDetails ', 
     async(token) => {
+        
         axios.defaults.headers.common.Authorization = `Bearer ${token}`
         const resp = await axios.get('/user',
         )

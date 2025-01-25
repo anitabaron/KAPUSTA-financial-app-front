@@ -2,9 +2,7 @@ import * as Yup from 'yup';
 import { useDispatch } from "react-redux"
 import { signInUser } from "../redux/auth/operation"
 import { useNavigate } from "react-router";
-// import { selectIsLogin, selectLightTheme } from '../redux/storeSlice';
-// import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+
 export const useSignIn=()=>{
   const dispach = useDispatch()
   const navigate = useNavigate()

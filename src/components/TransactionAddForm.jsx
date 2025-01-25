@@ -10,10 +10,9 @@ const Option = ({ category }) => {
 };
 
 export default function TransactionAddForm({ activeSheet }) {
-  const {category, useEffectGetCategory,useEffectGetTransaction, addTransaction } = useTransactionAddForm();
+  const {category, addTransaction } = useTransactionAddForm();
 
-  useEffectGetCategory()
-  useEffectGetTransaction()
+
   
   const selectCategory = category(activeSheet)
 
