@@ -30,6 +30,31 @@ const handleRejected = (state, action) => {
   state.isLoading = false;
   state.isError = action.error.message;
   console.log(state.isError);
+  if (state.isError.includes("401")){
+    console.log("wyczyszcze Ci dane")
+    state.isLoading = false; 
+    state.isError = null;
+    state.isLogin = false;
+    state.isDelate = null;
+    state.isRegister = null;
+    state.isVerified = null;
+    state.token = null;
+    state.refreshToken = null;
+    state.sesionId = null;
+    state.userName = null;
+    state.email = null;
+    state.balance = null;
+    state.totalIncome = null;
+    state.totalExpense = null;
+    state.incomes = [];
+    state.incomesCat = [];
+    state.incomesStat = {};
+    state.expenses = [];
+    state.expenseCat = [];
+    state.expenseStat = {};
+    state.transactionData = {};
+    state.initBalance = null;
+  }
 };
 
 const storeSlice = createSlice({
@@ -38,11 +63,11 @@ const storeSlice = createSlice({
   reducers: {
     //1.readDataFromLocalStorage
     readDataFromLocalStorage: (state, action) => {
-      state = JSON.parse(localStorage.getItem(`userLocaldata`));
+      state.token = JSON.parse(localStorage.getItem(`userLocaldata`));
     },
     //2.saveDataToLocalStorage
     saveDataToLocalStorage: (state, action) => {
-      localStorage.setItem(`userLocaldata`, JSON.stringify(state));
+      localStorage.setItem(`userLocaldata`, JSON.stringify(state.token));
     },
     //3.selectedDate
     changeSelectedDate: (state, action) => {
@@ -64,37 +89,16 @@ const storeSlice = createSlice({
       })
       //2.signInUser
       .addCase(signInUser.fulfilled, (state, action) => {
-        //console.log("signInUser", action.payload);
-        state.isError = null;
-        state.isLoading = false;
+        console.log("signInUser", action.payload);
         state.isLogin = true;
-        state.token = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-        state.userName = action.payload.userData.username;
-        state.email = action.payload.userData.email;
-        state.userID = action.payload.userData.id;
-        state.userAvatar = action.payload.userData.color;
-        state.isVerified = action.payload.userData.veryfi;
-        state.balance = action.payload.userData.balance;
-        state.incomes = [];
-        state.expenses = [];
-        state.incomes = [];
-        state.expenses = [];
-        action.payload.userData.transactions.forEach((transaction) => {
-
-          if (transaction.typeOfTransaction.toLowerCase().includes("expense")) {
-            state.expenses = [...state.expenses, transaction];
-          } else if (
-            transaction.typeOfTransaction.toLowerCase().includes("income")
-          ) {
-            state.incomes = [...state.incomes, transaction];
-          }
-        });
+        state.token = action.payload;
       })
+      
       //3.signOutUser
       .addCase(signOutUser.fulfilled, (state, action) => {
         //console.log("signOutUser", action.payload);
-        (state.isLoading = false), (state.isError = null);
+        state.isLoading = false; 
+        state.isError = null;
         state.isLogin = false;
         state.isDelate = null;
         state.isRegister = null;
@@ -114,6 +118,7 @@ const storeSlice = createSlice({
         state.expenseCat = [];
         state.expenseStat = {};
         state.transactionData = {};
+        state.initBalance = null;
       })
       //4.refreshUserToken   not implemented
       .addCase(refreshUserToken.fulfilled, (state, action) => {
@@ -180,30 +185,26 @@ const storeSlice = createSlice({
       })
       //13.userDetails
       .addCase(userDetails.fulfilled, (state, action) => {
-        //console.log("userDetails", action.payload.balance);
+        console.log("userDetails", action.payload);
         state.isError = null;
         state.isLoading = false;
         state.isLogin = true;
-        //state.userName = action.payload.username
-        //state.email = action.payload.email
-        //state.userID = action.payload.id
-        //state.userAvatar = action.payload.color
-        //state.isVerified = action.payload.veryfi
+        state.totalIncome = action.payload.totalIncome;
+        state.totalExpense = action.payload.totalExpense;
+        state.incomesStat = action.payload.incomeStats;
+        state.expenseStat = action.payload.expensesStats;
+        state.userName = action.payload.username
+        state.userID = action.payload.id
+        state.userAvatar = action.payload.avatar
+        state.isVerified = action.payload.veryfi
         state.balance = action.payload.balance;
-        // state.incomes = []
-        // state.expenses = []
-        action.payload.userData.transactions.forEach((transaction) => {
-          //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-          //     console.log('income')
-          //       state.incomes = [...state.incomes, transaction]
-          //   }
-          //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-          //     console.log('expense')
-          //       state.expenses =[...state.expenses, transaction]
-          //   }
-          // });
-        });
+        state.incomes = action.payload.income
+        state.expenses = action.payload.expenses
+        state.initBalance = action.payload.initBalance
       })
+
+
+
       //14.setUserBalance
       .addCase(setUserBalance.fulfilled, (state, action) => {
         //console.log("getUserBalance", action.payload);

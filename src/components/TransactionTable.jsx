@@ -1,7 +1,6 @@
 /** @format */
 
 import "../css/TransactionTable.css";
-import { useEffect } from "react";
 import { useTransactionTable } from "../hooks/useTransactionTable";
 import { v4 as uuidv4 } from "uuid";
 import delate from "../images/delete-svg.png";
@@ -27,19 +26,13 @@ const transactionTableRow = (row, deleteTransaction) => {
 export default function TransactionTable({ activeSheet }) {
   const {
     transactionTableData,
-    useEffectGetTransaction,
     deleteTransaction,
     deleteConf,
     deleteModalClose,
     modalIsOpen,
   } = useTransactionTable(activeSheet);
   
-  useEffectGetTransaction()
   const transactionData = transactionTableData();
-
-  // useEffect(() => {
-  //   console.log("Data for transaction:", transactionData);
-  // }, [transactionData]);
 
   return (
     <div className="">
